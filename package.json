@@ -1,0 +1,33 @@
+{
+  "name": "dksalaries",
+  "version": "1.0.0",
+  "description": "Get DraftKings salary data",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "lab -L -t 97 -p -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaw187/dksalaries.git"
+  },
+  "keywords": [
+    "draftkings",
+    "salaries"
+  ],
+  "author": "James Weston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaw187/dksalaries/issues"
+  },
+  "homepage": "https://github.com/jaw187/dksalaries#readme",
+  "dependencies": {
+    "code": "^2.0.1",
+    "hoek": "^3.0.4",
+    "joi": "^7.1.0",
+    "lab": "^8.0.1",
+    "wreck": "^7.0.0"
+  }
+}

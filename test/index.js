@@ -13,27 +13,21 @@ const expect = Code.expect;
 
 describe('DraftKings Salaries', () => {
 
-    it('sets salaries', (done) => {
+    it('gets salaries', (done) => {
 
         const options = {
             query: {
-                contestTypeId: 29,
-                draftGroupId: 7842
+                draftGroupId: 10519
             }
         };
 
         const salaries = new DKSalaries(options);
-        salaries.set((err) => {
+        salaries.get((err, result) => {
 
             expect(err).to.not.exist();
 
-            const realPlayer = 'Bears ';
-            const realResult = salaries.find(realPlayer);
-            const fakePlayer = 'Foobar';
-            const fakeResult = salaries.find(fakePlayer);
-
-            expect(realResult).to.exist();
-            expect(fakeResult).to.not.exist();
+            expect(result['Bears ']).to.exist();
+            expect(result['7147717']).to.exist();
             done();
         });
     });
@@ -51,13 +45,12 @@ describe('DraftKings Salaries', () => {
         done();
     });
 
-    it('fails to set salaries', (done) => {
+    it('fails to get salaries', (done) => {
 
         const options = {
             url: 'http://foobar',
             query: {
-                contestTypeId: 29,
-                draftGroupId: 7842
+                draftGroupId: 10519
             },
             wreckOptions: {
                 timeout: 1
@@ -65,7 +58,7 @@ describe('DraftKings Salaries', () => {
         };
 
         const salaries = new DKSalaries(options);
-        salaries.set((err) => {
+        salaries.get((err) => {
 
             expect(err).to.exist();
             done();

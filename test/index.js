@@ -13,12 +13,13 @@ const expect = Code.expect;
 
 describe('DraftKings Salaries', () => {
 
-    it('gets salaries', (done) => {
+    it('gets nfl salaries', (done) => {
 
         const options = {
             query: {
-                draftGroupId: 10519
-            }
+                draftGroupId: 11996
+            },
+            sport: 'nfl'
         };
 
         const salaries = new DKSalaries(options);
@@ -26,8 +27,28 @@ describe('DraftKings Salaries', () => {
 
             expect(err).to.not.exist();
 
-            expect(result['Bears ']).to.exist();
-            expect(result['7147717']).to.exist();
+            expect(result['Giants ']).to.exist();
+            expect(result['8045748']).to.exist();
+            done();
+        });
+    });
+
+    it('gets nba salaries', (done) => {
+
+        const options = {
+            query: {
+                draftGroupId: 11915
+            },
+            sport: 'nba'
+        };
+
+        const salaries = new DKSalaries(options);
+        salaries.get((err, result) => {
+
+            expect(err).to.not.exist();
+
+            expect(result['LeBron James']).to.exist();
+            expect(result['8043882']).to.exist();
             done();
         });
     });
@@ -50,11 +71,12 @@ describe('DraftKings Salaries', () => {
         const options = {
             url: 'http://foobar',
             query: {
-                draftGroupId: 10519
+                draftGroupId: 1
             },
             wreckOptions: {
                 timeout: 1
-            }
+            },
+            sport: 'foo'
         };
 
         const salaries = new DKSalaries(options);
